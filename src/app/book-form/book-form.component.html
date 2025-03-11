@@ -1,0 +1,37 @@
+<form [formGroup]="formGroupBooks">
+	<label>
+		<span>Id</span>
+		<input readonly formControlName="id">
+		<span *ngIf="idValidationError">{{ idValidationError }}</span>
+	</label>
+	<label>
+		<span>Title</span>
+		<input formControlName="title">
+		<span *ngIf="titleValidationError">{{ titleValidationError }}</span>
+	</label>
+	<label>
+		<span>Author</span>
+		<input formControlName="author">
+		<span *ngIf="authorValidationError">{{ authorValidationError }}</span>
+	</label>
+	<label>
+		<span>Price</span>
+		<input formControlName="price">
+		<span *ngIf="priceValidationError">{{ priceValidationError }}</span>
+	</label>
+	<label>
+		<span>Discount</span>
+		<input formControlName="discount">
+		<span *ngIf="discountValidationError">{{ discountValidationError }}</span>
+	</label>
+	<span style="font-weight: bold;">Tags</span>
+	<div style="display: flex; flex-direction: column;">
+		<label *ngFor="let tag of tags">
+			<input type="checkbox" [checked]="selectedTagOptions.value.includes(tag.id)" (change)="toggleSelection(tag.id, $event)">
+			<span>{{ tag.description }}</span>
+		</label>
+	</div>
+	<button (click)="setFormAdd()">Clear</button>
+	<button *ngIf="this.inputType === 0" (click)="validateform()">Add</button>
+	<button *ngIf="this.inputType === 1" (click)="validateform()">Edit</button>
+</form>

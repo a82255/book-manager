@@ -1,0 +1,34 @@
+<div *ngIf="books.length !== 0">
+	<label>
+		<span>ID:</span>
+		<span>{{ books[selectedIndex].id }}</span>
+	</label>
+	<label>
+		<span>Title:</span>
+		<span>{{ books[selectedIndex].title }}</span>
+	</label>
+	<label>
+		<span>Author:</span>
+		<span>{{ books[selectedIndex].author }}</span>
+	</label>
+	<label>
+		<span>Price:</span>
+		<span>${{ books[selectedIndex].price }}</span>
+	</label>
+	<label>
+		<span>Discount:</span>
+		<span>{{ books[selectedIndex].discount }}%</span>
+	</label>
+	<label>
+		<span>Tags:</span>
+		<span>
+			<ng-container *ngFor="let tag of books[selectedIndex].tags">
+				{{ tag.description }}
+			</ng-container>
+		</span>
+	</label>
+</div>
+<div>
+	<button (click)="showPreviousBook()">Previous</button>
+	<button (click)="showNextBook()">Next</button>
+</div>

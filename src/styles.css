@@ -1,1 +1,120 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: antiquewhite;
+}
+
+p {
+	margin: 0;
+}
+
+header {
+	border-bottom: 2px solid gray;
+	padding: 1rem;
+	text-align: center;
+	background-color: white;
+}
+
+header>h1 {
+	padding: 0;
+	margin: 0;
+}
+
+footer {
+	border-top: 2px solid gray;
+	padding: 1rem;
+	text-align: center;
+	background-color: white;
+}
+
+h2,
+h3 {
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px dotted gray;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	gap: 1rem;
+}
+
+main>section {
+	padding: 1rem;
+}
+
+section,
+article {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	flex: 1;
+
+	background-color: white;
+}
+
+section>div,
+article>div {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+section>form,
+article>form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+form>button,
+form>input {
+	width: 5rem;
+}
+
+form>label {
+	display: flex;
+	gap: 0.5rem;
+}
+
+
+form>label>span {
+	width: 15%;
+}
+
+form>label>input {
+	width: 70%;
+}
+
+#tabela_tags_aviso,
+form>label>input+span {
+	color: red;
+}
+
+article.ficha>div {
+	display: flex;
+	flex-direction: column;
+	border: 1px dotted gray;
+	padding: 1rem;
+}
+
+section>table,
+article>table {
+	width: 100%;
+}
+
+table td,
+table th {
+	text-align: center;
+	gap: 1rem;
+	border: 1px solid black;
+	padding: 0 1rem;
+}

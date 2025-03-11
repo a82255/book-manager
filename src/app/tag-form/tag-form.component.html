@@ -1,0 +1,14 @@
+<form [formGroup]="formGroupTags">
+	<label>
+		<span>ID</span>
+		<input readonly type="text" formControlName="id">
+		<span *ngIf="idValidationError">{{ idValidationError }}</span>
+	</label>
+	<label>
+		<span>Descrição</span>
+		<input type="text" formControlName="description">
+		<span *ngIf="descriptionValidationError">{{ descriptionValidationError }}</span>
+	</label>
+	<button type="submit" (click)="clearForm()">Clear</button>
+	<button type="submit" (click)="validateform()">Add</button>
+</form>

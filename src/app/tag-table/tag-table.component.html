@@ -1,0 +1,14 @@
+<table>
+	<thead>
+		<th>ID</th>
+		<th>Description</th>
+		<th>Controls</th>
+	</thead>
+	<tbody>
+		<tr *ngFor="let tag of tags">
+			<td>{{ tag.id }}</td>
+			<td>{{ tag.description }}</td>
+			<td><button (click)="removeTag(tag.id)">Remove</button></td>
+		</tr>
+	</tbody>
+</table>

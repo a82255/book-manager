@@ -1,0 +1,28 @@
+<table>
+	<thead>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Tags</th>
+		<th>Price</th>
+		<th>Discount</th>
+		<th>Controls</th>
+	</thead>
+	<tbody>
+		<tr *ngFor="let book of books">
+			<td>{{ book.id }}</td>
+			<td>{{ book.title }}</td>
+			<td>{{ book.author }}</td>
+			<td>
+				<span *ngFor="let tag of book.tags">{{ tag.description }}</span>
+			</td>
+			<td>{{ book.price }}</td>
+			<td>{{ book.discount }}</td>
+			<td>
+				<button (click)="selectBook(book.id!)">Select</button>
+				<button (click)="editBook(book.id!)">Edit</button>
+				<button (click)="removeBook(book.id!)">Remove</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
