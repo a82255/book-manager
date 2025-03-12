@@ -28,10 +28,11 @@ export class AppComponent {
   constructor(private booksService: BooksService, private tagsService: TagsService) { }
 
   ngOnInit() {
-    this.booksService.getBooks().toPromise().then(data => {
-      this.books = data;
-    }).catch(err => {
-      console.error(err);
+    this.booksService.getBooks().subscribe({
+      next: (data) => {
+        this.books = data;
+      },
+      error: (err) => console.error(err)
     });
     this.tagsService.getTags().toPromise().then(data => {
       this.tags = data;
@@ -45,9 +46,7 @@ export class AppComponent {
       next: (data) => {
         this.tags = this.tags.filter(t => t.id !== tagId);
       },
-      error: (err) => {
-        console.error(err);
-      },
+      error: (err) => console.error(err),
       complete: () => {
         this.tags = this.tags.sort((a, b) => a.id! - b.id!);
       }
