@@ -34,10 +34,11 @@ export class AppComponent {
       },
       error: (err) => console.error(err)
     });
-    this.tagsService.getTags().toPromise().then(data => {
-      this.tags = data;
-    }).catch(err => {
-      console.error(err);
+    this.tagsService.getTags().subscribe({
+      next: (data) => {
+        this.tags = data;
+      },
+      error: (err) => console.error(err)
     });
   }
 
@@ -58,9 +59,7 @@ export class AppComponent {
       next: (data) => {
         this.tags.push(data);
       },
-      error: (err) => {
-        console.error(err);
-      },
+      error: (err) => console.error(err),
       complete: () => {
         this.tags = this.tags.sort((a, b) => a.id! - b.id!);
       }
@@ -72,9 +71,7 @@ export class AppComponent {
       next: (data) => {
         this.books = this.books.filter(b => b.id !== bookId);
       },
-      error: (err) => {
-        console.error("Delete failed", err);
-      },
+      error: (err) => console.error("Delete failed", err),
       complete: () => {
         this.books = this.books.sort((a, b) => a.id! - b.id!);
         if (this.bookFormComponent.formGroupBooks.value.id == bookId) {
@@ -94,9 +91,7 @@ export class AppComponent {
         book.tags = this.tags.filter(tag => data.tags.includes(tag.id));
         this.books.push(data);
       },
-      error: (err) => {
-        console.error(err);
-      },
+      error: (err) => console.error(err),
       complete: () => {
         this.books = this.books.sort((a, b) => a.id! - b.id!);
         this.bookFormComponent.setFormAdd();
@@ -115,9 +110,7 @@ export class AppComponent {
           this.books![bookIndex] = data;
         }
       },
-      error: (err) => {
-        console.error(err);
-      },
+      error: (err) => console.error(err),
       complete: () => {
         this.bookFormComponent.setFormAdd();
       }
